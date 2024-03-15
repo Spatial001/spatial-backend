@@ -34,3 +34,18 @@ export const signup = async (req, res) => {
         res.status(500).json({ message: "Something went wrong" })
     }
 }
+
+export const home = (req, res) => {
+
+
+    try {
+        const existingUser = User.findOne({ email: req.decoded?.email });
+        if (!existingUser) return res.status(404).json({ code: 404, message: "User doesnt exist" })
+        return res.status(200).send("authenticated")
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ code: 500, message: "Something went wrong" })
+    }
+
+}
