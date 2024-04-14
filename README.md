@@ -9,7 +9,7 @@ This README would normally document whatever steps are necessary to get your app
 
     body:{
         email:string,
-        password:string
+        password:string,
     }
 ### How do I get set up? ###
 # /signup
@@ -17,5 +17,5 @@ This README would normally document whatever steps are necessary to get your app
     body:{
         name:string,
         email:string,
-        password:string
+        password:string,
     }
