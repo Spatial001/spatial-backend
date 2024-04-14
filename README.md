@@ -17,5 +17,5 @@ This README would normally document whatever steps are necessary to get your app
     body:{
         name:string,
         email:string,
-        password:string,
+        password:string
     }
