@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv'
 import userRoutes from './routes/users.js'
+import postRoutes from "./routes/post.js"
 
 const app = express();
 dotenv.config();
@@ -15,6 +16,7 @@ if (process.env.MODE == "production") url = urlDocker
 else url = process.env.ATLAS_URL
 
 app.use('/', userRoutes)
+app.use("/post", postRoutes)
 const PORT = process.env.PORT;
 
 await mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(
