@@ -3,7 +3,7 @@ services:
   localMongo:
     depends_on:
       - mongodb
-    image: localmongo
+    image: shawchandankumar20/localmongo
     container_name: local
     build: .
     ports:

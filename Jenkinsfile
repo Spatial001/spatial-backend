@@ -6,5 +6,12 @@ pipeline {
                 sh 'npm install' 
             }
         }
+        stage('Build and Push Docker image') {
+            steps {
+                script {
+                    sh 'BuildAndPushDockerImage.sh'
+                }
+            }
+        }
     }
 }
