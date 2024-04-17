@@ -3,10 +3,12 @@ import dotenv from "dotenv";
 dotenv.config();
 export const validation = async (error, req, res, next) => {
     try {
-        if (error.validationErrors)
-            return res.status(400).json({
-                errors: error.validationErrors,
-            });
+        if (error.validationErrors) {
+            const msg = error.validationErrors.body[0].dataPath.slice(1) + " " + error.validationErrors.body[0].message
+            return res.status(400).json(
+                { message: msg }
+            );
+        }
         next();
     } catch (error) {
         console.log(error);
