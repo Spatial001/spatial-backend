@@ -1,9 +1,10 @@
 import post from "../models/post.js";
 export const createPost = async (req, res) => {
-    const { coords } = req.body;
+    const { coords, title, image } = req.body;
+    if (!image) image = ""
     try {
         const p = { type: 'Point', coordinates: coords };
-        const result = await post.create({ location: p })
+        const result = await post.create({ location: p, title, image })
         res.status(200).json(result)
     } catch (error) {
         console.log(error)

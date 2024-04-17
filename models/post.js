@@ -15,7 +15,18 @@ const postSchema = mongoose.Schema({
         type: Date,
         default: () => new Date(),
         immutable: true,
-    }
+    },
+    title: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String
+    },
+    votes: {
+        type: Array,
+        default: [],
+    },
 })
 postSchema.index({ location: '2dsphere' })
 export default mongoose.model("Post", postSchema)
