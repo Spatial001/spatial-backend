@@ -3,12 +3,15 @@ It is a backend for a spatial application based on nodejs.
 
 ## How to use
 
-With docker (local mongo)
+With docker (local mongo) run
+```
     docker-compose build
     docker-compose up
-Using without docker (mongo atlas)
+```
+Using without docker (mongo atlas) run 
+```
     npm start
-
+```
 # User Api
 # Endpoints
 # /login
