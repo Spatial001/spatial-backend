@@ -5,12 +5,12 @@ It is a backend for a spatial application based on nodejs.
 
 With docker (local mongo) run
 ```
-    docker-compose build
-    docker-compose up
+docker-compose build
+docker-compose up
 ```
 Using without docker (mongo atlas) run 
 ```
-    npm start
+npm start
 ```
 # User Api
 # Endpoints
