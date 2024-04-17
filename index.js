@@ -10,7 +10,9 @@ import dotenv from 'dotenv'
 import userRoutes from './routes/users.js'
 import postRoutes from "./routes/post.js"
 
+dotenv.config({ path: '.env.server' })
 const PORT = process.env.PORT || 8080;
+const path = process.env.SERVER ? "20.204.173.246" : "localhost"
 const options = {
     definition: {
         openapi: "3.0.0",
@@ -21,7 +23,7 @@ const options = {
         },
         servers: [
             {
-                url: `http://localhost:${PORT}`
+                url: `http://${path}:${PORT}`
             }
         ],
     },
@@ -49,5 +51,5 @@ app.use('/', userRoutes)
 app.use("/post", postRoutes)
 
 await mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }).then(
-    app.listen(PORT, () => console.log(`${process.env.MODE}: Server Running on Port: http://localhost:${PORT}`))
+    app.listen(PORT, () => console.log(`${process.env.MODE}: Server Running on Port: http://localhost:${PORT} \nSwagger Running on: http://${path}:${PORT}/api-docs`))
 ).catch((err) => { console.log(err) })

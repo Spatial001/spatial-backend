@@ -2,3 +2,5 @@
 .vscode
 mongo
 access.log
+.env.server
+.nvmrc

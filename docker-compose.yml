@@ -14,7 +14,7 @@ services:
       - DB_HOST=mongodb
       - DB_NAME=$DB_NAME
       - DB_PORT=$DB_PORT
-      - MODE=production
+      - MODE=${mode:-production}
     stdin_open: true
     tty: true
   mongodb:
