@@ -28,3 +28,9 @@ npm start
         email:string,
         password:string,
     }
+
+# /home
+
+    headers.authorisation[
+        "${jwtToken}"
+    ]

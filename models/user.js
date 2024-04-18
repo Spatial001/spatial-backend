@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+
 const userSchema = mongoose.Schema({
     email: { type: String, required: true },
     password: { type: String, required: true },
@@ -6,6 +7,9 @@ const userSchema = mongoose.Schema({
     createdAt: {
         type: Date,
         default: () => new Date(),
-    }
+    },
+    savedPosts: { type: Array, default: [] },
+    savedComments: { type: Array, default: [] }
 })
+
 export default mongoose.model("User", userSchema)
