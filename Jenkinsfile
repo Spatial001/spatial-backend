@@ -6,10 +6,17 @@ pipeline {
                 sh 'npm install' 
             }
         }
-        stage('Build and Push Docker image') {
+        stage('Build Docker image') {
             steps {
                 script {
-                    sh 'BuildAndPushDockerImage.sh'
+                    sh 'docker-compose build'
+                }
+            }
+        }
+        stage('Push image to registry') {
+            steps {
+                script {
+                    sh 'docker-compose push'
                 }
             }
         }
