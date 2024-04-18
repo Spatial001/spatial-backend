@@ -20,6 +20,13 @@ pipeline {
                 }
             }
         }
+        stage('Stop previous container') {
+            steps {
+                script {
+                    sh 'docker-compose down'
+                }
+            }
+        }
         stage('Start application container') {
             steps {
                 script {
