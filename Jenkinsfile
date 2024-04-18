@@ -20,5 +20,12 @@ pipeline {
                 }
             }
         }
+        stage('Start application container') {
+            steps {
+                script {
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
     }
 }
