@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spatial
+  labels:
+    app: spatial
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spatial
+  template:
+    metadata:
+      labels:
+        app: dummy
+    spec:
+      containers:
+      - name: spatial-container
+        image: shawchandankumar20/localmongo:latest
+        ports:
+        - containerPort: 8080
