@@ -27,13 +27,6 @@ pipeline {
                 }
             }
         }
-        stage('Start application container') {
-            steps {
-                script {
-                    sh 'docker-compose up -d'
-                }
-            }
-        }
         stage('Deployment to K8S cluster') { 
             steps {
                 sshagent(['kubernetes-cluster']) {
