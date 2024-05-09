@@ -34,5 +34,19 @@ pipeline {
                 }
             }
         }
+        stage('Deployment to K8S cluster') { 
+            steps {
+                sshagent(['kubernetes-cluster']) {
+                    sh 'scp -o StrictHostKeyChecking=no spatial-deployment.yaml ubuntu@52.91.174.13:/home/ubuntu'
+                    script{
+                        try{
+                            sh 'ssh ubuntu@52.91.174.13 sudo kubectl apply -f .'
+                        }catch(error) {
+                            sh 'ssh ubuntu@52.91.174.13 sudo kubectl create -f .'
+                        }
+                    }
+                }
+            }
+        }
     }
 }
