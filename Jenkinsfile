@@ -20,13 +20,6 @@ pipeline {
                 }
             }
         }
-        stage('Stop previous container') {
-            steps {
-                script {
-                    sh 'docker-compose down'
-                }
-            }
-        }
         stage('Deployment to K8S cluster') { 
             steps {
                 sshagent(['kubernetes-cluster']) {
