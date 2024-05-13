@@ -52,9 +52,9 @@ app.use(morgan('common', {
 }));
 app.use(morgan('dev'));
 
-let url
-if (process.env.MODE == "production") url = urlDocker
-else url = process.env.ATLAS_URL
+let url = urlDocker
+// if (process.env.MODE == "production") url = urlDocker
+// else url = process.env.ATLAS_URL
 app.use('/', userRoutes)
 app.use("/post", postRoutes)
 
