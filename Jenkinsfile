@@ -3,6 +3,7 @@ pipeline {
     environment {
         IMAGE_NAME = "shawchandankumar20/localmongo"
         IMAGE_TAG = "latest"
+        K8S_HOST_IP = "100.25.146.127"
     }
     stages {
         stage('Build') { 
@@ -31,12 +32,12 @@ pipeline {
         stage('Deployment to K8S cluster') { 
             steps {
                 sshagent(['kubernetes-cluster']) {
-                    sh 'scp -o StrictHostKeyChecking=no spatial-deployment.yaml ubuntu@52.91.174.13:/home/ubuntu'
+                    sh 'scp -o StrictHostKeyChecking=no spatial-deployment.yaml ubuntu@${K8S_HOST_IP}:/home/ubuntu'
                     script{
                         try{
-                            sh 'ssh ubuntu@52.91.174.13 sudo kubectl apply -f .'
+                            sh 'ssh ubuntu@${K8S_HOST_IP} sudo kubectl apply -f .'
                         }catch(error) {
-                            sh 'ssh ubuntu@52.91.174.13 sudo kubectl create -f .'
+                            sh 'ssh ubuntu@${K8S_HOST_IP} sudo kubectl create -f .'
                         }
                     }
                 }
