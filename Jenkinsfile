@@ -54,7 +54,7 @@ pipeline {
                     sh 'scp -o StrictHostKeyChecking=no spatial-deployment.yaml ubuntu@${K8S_HOST_IP}:/home/ubuntu'
                     script{
                         try{
-                            sh 'ssh ubuntu@${K8S_HOST_IP} sudo kubectl apply -f .'
+                            sh 'ssh ubuntu@${K8S_HOST_IP} "sudo kubectl apply -f .; export KUBECONFIG="$(sudo k3d kubeconfig write mycluster)"; sudo k3d node edit k3d-mycluster-serverlb --port-add 8081:30036;"'
                         }catch(error) {
                             sh 'ssh ubuntu@${K8S_HOST_IP} sudo kubectl create -f .'
                         }
