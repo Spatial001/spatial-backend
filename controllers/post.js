@@ -219,3 +219,5 @@ export const getSavedPosts = async (req, res) => {
         return res.status(500).json({ code: 500, message: error })
     }
 }
+
+module.exports =  {createPost, getPosts, createCommentOnPost}
