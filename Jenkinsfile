@@ -3,7 +3,7 @@ pipeline {
     environment {
         IMAGE_NAME = "shawchandankumar20/localmongo"
         IMAGE_TAG = "latest"
-        K8S_HOST_IP = "100.25.146.127"
+        K8S_HOST_IP = "54.146.68.43"
     }
     stages {
         stage('Build') { 
