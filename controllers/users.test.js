@@ -1,8 +1,6 @@
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
 import dotenv from 'dotenv';
-import { login, home, signup, savePost, saveComment } from './users.js';
+import { login, home, signup } from './users.js';
 
 dotenv.config();
 
