@@ -73,7 +73,7 @@ export const getAllComments = async (req, res) => {
 
 }
 
-const _getAllPosts = async (_, res) => {
+export const _getAllPosts = async (_, res) => {
     return res.status(200).json(await post.find())
 }
 
@@ -220,4 +220,21 @@ export const getSavedPosts = async (req, res) => {
     }
 }
 
-module.exports =  {createPost, getPosts, createCommentOnPost}
+// export const deletePost = async (req, res) => {
+//     const { postIDS, lim, skipTo } = req.body;
+//     const numPosts = lim || 5;
+//     const skipPosts = skipTo || 0;
+//     try {
+//         var ids = []
+//         postIDS.forEach(function (item) {
+//             ids.push(new mongoose.Types.ObjectId(item))
+//         })
+//         const posts = await post.deleteOne({ _id: { $in: ids } }).limit(numPosts).skip(skipPosts)
+//         return res.status(200).json({ code: 200, posts })
+//     } catch (error) {
+//         console.log(error)
+//         return res.status(500).json({ code: 500, message: error })
+//     }
+// }
+
+// module.exports =  {createPost, getPosts, createCommentOnPost}
